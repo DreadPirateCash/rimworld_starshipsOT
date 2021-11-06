@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSLambdaShuttle</defName>
+    <label>Lambda Shuttle</label>
+    <description>Lambda-class T-4a shuttle from Sienar Fleet Systems.</description>
+    <baseCost>1000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>TransportPod</li>
+    </prerequisites>
+    <researchViewX>0</researchViewX>
+    <researchViewY>5.5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSTIEFighter</defName>
+    <label>TIE Fighter</label>
+    <description>The TIE/Ln starfighter by Sienar Fleet Systems.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSLambdaShuttle</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSTIEInterceptor</defName>
+    <label>TIE Interceptor</label>
+    <description>The TIE/In starfighter by Sienar Fleet Systems.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSTIEFighter</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSTIEDefender</defName>
+    <label>TIE Defender</label>
+    <description>The TIE/D starfighter by Sienar Fleet Systems.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSTIEInterceptor</li>
+    </prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSTIEBomber</defName>
+    <label>TIE Bomber</label>
+    <description>The TIE/sa starfighter by Sienar Fleet Systems.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSTIEDefender</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSTIEAdvanced</defName>
+    <label>TIE Advanced</label>
+    <description>The TIE/x1 starfighter by Sienar Fleet Systems, customized for Darth Vader.</description>
+    <baseCost>5000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSTIEBomber</li>
+    </prerequisites>
+    <researchViewX>5</researchViewX>
+    <researchViewY>5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSSlaveOne</defName>
+    <label>Slave 1</label>
+    <description>A modified Firespray-31-class patrol and attack craft originally by Kuat Systems Engineering.</description>
+    <baseCost>5000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSTIEBomber</li>
+    </prerequisites>
+    <researchViewX>6</researchViewX>
+    <researchViewY>5.5</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSXWing</defName>
+    <label>X-Wing</label>
+    <description>The T-65B X-Wing starfighter from the Incom Corporation.</description>
+    <baseCost>1500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSLambdaShuttle</li>
+    </prerequisites>
+    <researchViewX>1</researchViewX>
+    <researchViewY>6</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSAWing</defName>
+    <label>A-Wing</label>
+    <description>The RZ-1 A-Wing interceptor from Kuat Systems Engineering.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSXWing</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>6</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSYWing</defName>
+    <label>Y-Wing</label>
+    <description>The BTL-B Y-Wing bomber from Koensayr Manufacturing.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Research_SRTSAWing</li>
+    </prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>6</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSBWing</defName>
+    <label>B-Wing</label>
+    <description>The A/SF-01 B-Wing assault starfighter from Slayn and Korpil.</description>
+    <baseCost>2500</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSYWing</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>6</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <tab>SRTSE</tab>
+    <defName>Research_SRTSMilleniumFalcon</defName>
+    <label>Millenium Falcon</label>
+    <description>A modified Corellian YT-1300F light freighter rumored to have made the Kessel Run in less than 12 parsecs.</description>
+    <baseCost>5000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>Research_SRTSBWing</li>
+    </prerequisites>
+    <researchViewX>5</researchViewX>
+    <researchViewY>6</researchViewY>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+  </ResearchProjectDef>
+
+</Defs>

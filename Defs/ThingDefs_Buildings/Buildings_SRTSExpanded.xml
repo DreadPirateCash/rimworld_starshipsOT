@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Lambda Shuttle -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSLambdaShuttle</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>Imperial Lambda Shuttle</label> <!-- name displayed ingame -->
+    <description>Comissioned for troop movement and small cargo, the Lambda-class T-4a shuttle was designed by Sienar Fleet Systems for the Empire. Due to its ease of control and lack of weapons it regulaly falls the hands of other factions.
+    
+Passenger cap: 12
+Space flight: Yes
+
+----------------------------
+Speed: Normal
+Fuel cap: 600L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 1200kg
+Internal power plant: 500w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>Lambda</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(9,9)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,5)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>5000</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>20</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>750</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>1200</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>15</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>12</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>600</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>600</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSLambdaShuttle</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+
+<!-- TIE Fighter -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSTIEFighter</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>TIE Fighter</label> <!-- name displayed ingame -->
+    <description>Built by Sienar Fleet Systems, the TIE/Ln starfighter was the standard Imperial starfighter. It features twin laser cannons but no shielding.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 3
+  Accuracy: Good
+  Build: Strike Craft
+----------------------------
+Speed: Good
+Fuel cap: 800L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 350kg
+Internal power plant: 700w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>TIEFighter</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,3)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1000</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>350</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>20</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>3</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>3</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>3</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>3</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>800</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-700</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSTIEFighter</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- TIE Interceptor -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSTIEInterceptor</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>TIE Interceptor</label> <!-- name displayed ingame -->
+    <description>The TIE/In starfighter is an upgraded version of the standard TIE with quad laser cannons, upgraded targeting, higher speed, and better manueverability.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 5/10
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Excellent
+Fuel cap: 800L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 500kg
+Internal power plant: 900w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>TIEInterceptor</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,3)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1200</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>500</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>25</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>5</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>10</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>800</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-900</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSTIEInterceptor</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- TIE Defender -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSTIEDefender</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>TIE Defender</label> <!-- name displayed ingame -->
+    <description>The TIE/D defender has an arsenal of four laser cannons, two ion cannons, two warhead launchers making it the most advanced starfighter available.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 10/10
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Excellent
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 500kg
+Internal power plant: 1000w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>TIEDefender</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,3)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1200</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>500</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>25</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>10</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>10</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>1</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSTIEDefender</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- TIE Bomber -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSTIEBomber</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>TIE Bomber</label> <!-- name displayed ingame -->
+    <description>The TIE/sa bomber is a larger, less maneuverable TIE starfighter used for destroying large starships and pinpoint-precision bombing.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 15/25
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Good
+Fuel cap: 800L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 800kg
+Internal power plant: 900w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>TIEBomber</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,4)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1500</Steel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>800</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>15</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>15</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>25</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>1</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>.5</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>1</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>800</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>800</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-900</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSTIEBomber</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- TIE Advanced -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSTIEAdvanced</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>Vader's Custom TIE</label> <!-- name displayed ingame -->
+    <description>The TIE Advanced x1 is an advanced prototype starfighter touted as a replacement for the standard TIE Fighter tested by Darth Vader.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 10
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Excellent
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 300kg
+Internal power plant: 800w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>TIEAdvanced</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(5,4)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1750</Steel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>300</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>25</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>10</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>10</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1.25</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-800</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSTIEAdvanced</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- Slave 1 -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSSlaveOne</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>Slave 1</label> <!-- name displayed ingame -->
+    <description>Slave I is a heavily modified prototype Firespray-31-class patrol and attack craft used by famed Mandalorian bounty hunters Jango Fett and his cloned son, Boba Fett.
+    
+Passenger cap: 1-4
+Space flight: Yes
+
+--Military--
+  Bombs: 20
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Good
+Fuel cap: 1200L
+Fuel efficiency: Good
+----------------------------
+Cargo cap: 900kg
+Internal power plant: 1200w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>SlaveOne</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(9,9)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(3,7)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>2000</Steel>
+      <ComponentIndustrial>15</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>900</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>22</travelSpeed>
+        <fuelPerTile>2</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>4</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>20</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>20</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1.25</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1200</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1200</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1200</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSSlaveOne</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- X-Wing -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSXWing</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>X-Wing</label> <!-- name displayed ingame -->
+    <description>Made by the Incom Corporation, the X-Wing starighter is marked by their distinctive S-foils and is heavily armed with quad laser cannons.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 6
+  Accuracy: Good
+  Build: Strike Craft
+----------------------------
+Speed: Good
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 500kg
+Internal power plant: 900w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>XWing</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(8,8)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(6,2)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>750</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7200</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1500</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>500</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>15</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>6</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>6</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>3</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-900</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSXWing</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- A-Wing -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSAWing</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>A-Wing</label> <!-- name displayed ingame -->
+    <description>Made by Kuat Systems Engineering, the A-Wing starighter is a strike craft with higher speed and manueverability than it's X-Wing counterpart at the expense of firepower.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 2/6
+  Accuracy: Good
+  Build: Strike Craft
+----------------------------
+Speed: Excellent
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 350kg
+Internal power plant: 900w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>AWing</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(6,6)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(4,6)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>850</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7500</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1250</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>350</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>20</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>2</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>6</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1.25</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>1</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-900</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSAWing</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- Y-Wing -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSYWing</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>Y-Wing</label> <!-- name displayed ingame -->
+    <description>The BTL-series, or Y-wing, was a series of multi-role starfighter-bombers manufactured by Koensayr Manufacturing.
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 10/15
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Normal
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 500kg
+Internal power plant: 1200w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>YWing</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(9,9)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(4,6)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>850</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7500</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1500</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>500</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>15</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>10</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>15</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>1</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>.75</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1200</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSYWing</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- B-Wing -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSBWing</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>B-Wing</label> <!-- name displayed ingame -->
+    <description>The A/SF-01 B-wing assault starfighter, more commonly referred to as the B-wing, was a heavily armed Rebel Alliance single-pilot starfighter and bomber manufactured by Slayn and Korpil. 
+
+Passenger cap: 1
+Space flight: Yes
+
+--Military--
+  Bombs: 10/15
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Excellent
+Fuel cap: 1000L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 500kg
+Internal power plant: 1500w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>BWing</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(10,10)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(8,2)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>850</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7500</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>1750</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>500</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>25</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>1</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>10</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>15</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>1</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1000</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1000</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSBWing</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  <!-- Millenium Falcon -->
+
+  <ThingDef ParentName="NECShipBase">
+    <defName>SRTSMilleniumFalcon</defName> <!-- defName must be unique, including with other mods so be creative -->
+    <label>Millenium Falcon</label> <!-- name displayed ingame -->
+    <description>Made by Kuat Systems Engineering, the A-Wing starighter is a strike craft with higher speed and manueverability than it's X-Wing counterpart at the expense of firepower.
+
+Passenger cap: 1-6
+Space flight: Yes
+
+--Military--
+  Bombs: 6/12
+  Accuracy: Excellent
+  Build: Strike Craft
+----------------------------
+Speed: Unique
+Fuel cap: 1200L
+Fuel efficiency: Normal
+----------------------------
+Cargo cap: 750kg
+Internal power plant: 2000w</description> <!-- description of course... -->
+    <graphicData>
+      <texPath>Falcon</texPath> <!-- filepath starting from Textures folder, our textures our not organized so.. no file path can be noticed lol "-P"
+
+      Pfft. Organization. "-N" -->
+      <graphicClass>Graphic_Multi</graphicClass> <!-- graphic class can be left alone, it's how the game pulls _north, _east, _south textures -->
+      <drawSize>(12,12)</drawSize> <!-- how much the image is stretched out ingame -->
+    </graphicData>
+    <size>(6,8)</size> <!-- hitbox -->
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints> <!-- hitpoints of the building -->
+      <WorkToBuild>7500</WorkToBuild> <!-- how much work it costs to build, which is more like a base type, as more properties affect it, resulting in a different final number for construction -->
+      <Flammability>0.7</Flammability> <!-- how easy it is to catch on fire (duh) -->
+      <Mass>20</Mass> <!-- how much it weighs for a pawn to carry. My guess is they are light in this mod so pawns entering a map will throw it in their inventory rather than lose it, but i can check that later. -->
+      <Beauty>25</Beauty> <!-- beauty on overlap, and for pawns -->
+    </statBases>
+    <costList> <!-- Costs to build, the names are the defNames of items -->
+      <Steel>2500</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps> <!-- required for sending as drop pod -->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.75</restEffectiveness>
+        <massCapacity>750</massCapacity>
+      </li>
+      <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
+        <travelSpeed>30</travelSpeed>
+        <fuelPerTile>2.25</fuelPerTile>
+        <minPassengers>1</minPassengers>
+        <maxPassengers>6</maxPassengers>
+      	<spaceFaring>true</spaceFaring>
+      	<shuttleBayLanding>false</shuttleBayLanding>
+      </li>
+      <li Class="SRTS.CompProperties_BombsAway"> <!-- include this comp if you want it to be able to carpet bomb, remove this comp if you dont. Be aware you must also add a bomber skydropper def set -->
+        <numberBombs>6</numberBombs> <!-- num dropped per run -->
+		    <precisionBombingNumBombs>12</precisionBombingNumBombs> <!-- number of bombs dropped in precise drop -->
+        <radiusOfDrop>2</radiusOfDrop> <!-- how many cells out from the center the bombs may drop -->
+        <speed>1.25</speed> <!-- How quickly the ship flies over. Default 1 -->
+		    <distanceBetweenDrops>2</distanceBetweenDrops> <!-- Distance in cells from when each bomb is dropped -->
+	  </li>
+      <li Class="CompProperties_Refuelable"> <!-- comp for allowing to fuel the srts, don't remove -->
+        <fuelCapacity>1200</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1200</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialFuelPercent>0.25</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+      <li Class="CompProperties_Power"> <!-- how much power it gives off (gonna be making this cost fuel in the future -->
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-2000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>12</glowRadius>
+        <glowColor>(217,217,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites> <!-- research requirements -->
+      <li>Research_SRTSMilleniumFalcon</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite> <!-- construction skill requirements -->
+    <uiIconScale>0.95</uiIconScale> <!-- UI scaling -->
+    <killedLeavings>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+
+</Defs>
