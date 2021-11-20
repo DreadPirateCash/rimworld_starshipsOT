@@ -387,9 +387,9 @@ Internal power plant: 1000w</description> <!-- description of course... -->
   <ThingDef ParentName="NECShipBase">
     <defName>SRTSTIEBomber</defName> <!-- defName must be unique, including with other mods so be creative -->
     <label>TIE Bomber</label> <!-- name displayed ingame -->
-    <description>The TIE/sa bomber is a larger, less maneuverable TIE starfighter used for destroying large starships and pinpoint-precision bombing.
+    <description>The TIE/sa bomber is a larger, less maneuverable TIE starfighter used for destroying large starships and pinpoint-precision bombing. Requires a pilot and a bomber.
 
-Passenger cap: 1
+Passenger cap: 2
 Space flight: Yes
 
 --Military--
@@ -430,8 +430,8 @@ Internal power plant: 900w</description> <!-- description of course... -->
       <li Class="SRTS.CompProperties_LaunchableSRTS"> <!-- required for SRTS like functionality (ie. space ship reusable drop pod -->
         <travelSpeed>15</travelSpeed>
         <fuelPerTile>2.25</fuelPerTile>
-        <minPassengers>1</minPassengers>
-        <maxPassengers>1</maxPassengers>
+        <minPassengers>2</minPassengers>
+        <maxPassengers>2</maxPassengers>
       	<spaceFaring>true</spaceFaring>
       	<shuttleBayLanding>false</shuttleBayLanding>
       </li>
